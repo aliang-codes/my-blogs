@@ -8,8 +8,8 @@ categories:
 tags:
   - 
 author: 
-  name: erlangtui
-  link: https://github.com/erlangtui
+  name: aliang
+  link: https://github.com/aliang-codes
 ---
 - 交换机与路由器：
     - 和网卡不同，交换机的端口不具有 MAC 地址，交换机根据 MAC 地址表查找 MAC 地址，然后将信号发送到相应的端口。

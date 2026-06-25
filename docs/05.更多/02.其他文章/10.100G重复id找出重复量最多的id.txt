@@ -8,8 +8,8 @@ categories:
 tags:
   - 
 author: 
-  name: erlangtui
-  link: https://github.com/erlangtui
+  name: aliang
+  link: https://github.com/aliang-codes
 ---
 
 为了高效处理100GB大文件并找出重复量最大的ID，可以采用分片处理策略，避免内存溢出。以下是分步解决方案及代码实现：
