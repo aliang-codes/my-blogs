@@ -31,5 +31,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/.vuepress/dist
           publish_branch: gh-pages
-          cname: # 如果你有自定义域名，取消注释并填写
-            # erlangtui.top
+          # 强制完全覆盖 gh-pages 分支，清除历史残留（如旧的 CNAME 文件）
+          force_orphan: true
+          # 不使用自定义域名。如需自定义域名，取消下一行注释并填写
+          # cname: your-domain.com
