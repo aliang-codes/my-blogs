@@ -24,7 +24,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
       description: '后端技术博客，个人学习与总结。Go、C++、Python、Shell，Mysql、Redis、Kafka、Docker、Consul、Hive等技术文',
     }
   },
-  base: '/aliang/', // 默认'/'。如果你想将你的网站部署到如 https://foo.github.io/bar/，那么 base 应该被设置成 "/bar/",（否则页面将失去样式等文件）
+  base: '/my-blogs/', // 默认'/'。如果你想将你的网站部署到如 https://foo.github.io/bar/，那么 base 应该被设置成 "/bar/",（否则页面将失去样式等文件）
 
   // 主题配置
   themeConfig: {
