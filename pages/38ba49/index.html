@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>流量复制技术-gor | 阿良的个人博客</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/my-blogs/img/logo.ico">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_3077305_pt8umhrn4k9.css">
+    <meta name="description" content="后端技术博客，个人学习与总结。Go、C++、Python、Shell，Mysql、Redis、Kafka、Docker、Consul、Hive等技术文">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="keywords" content="后端开发，个人博客，技术文档，Go、C++、Python、Mysql、Redis、Kafka等">
+    <meta name="baidu-site-verification" content="codeva-GQzTi8Q8fG">
+    <meta name="360-site-verification" content="c04fbb9e09bf8d4d06792071154494f3">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/my-blogs/assets/css/0.styles.c6aa4258.css" as="style"><link rel="preload" href="/my-blogs/assets/js/app.897002ef.js" as="script"><link rel="preload" href="/my-blogs/assets/js/2.ab75070d.js" as="script"><link rel="preload" href="/my-blogs/assets/js/3.3358a5a5.js" as="script"><link rel="preload" href="/my-blogs/assets/js/56.dc5b5e5d.js" as="script"><link rel="prefetch" href="/my-blogs/assets/js/10.3743831c.js"><link rel="prefetch" href="/my-blogs/assets/js/100.c74e5a81.js"><link rel="prefetch" href="/my-blogs/assets/js/101.d4885e11.js"><link rel="prefetch" href="/my-blogs/assets/js/102.16ed4ded.js"><link rel="prefetch" href="/my-blogs/assets/js/103.4c728002.js"><link rel="prefetch" href="/my-blogs/assets/js/104.913517a7.js"><link rel="prefetch" href="/my-blogs/assets/js/11.154eb20b.js"><link rel="prefetch" href="/my-blogs/assets/js/12.f2a515d0.js"><link rel="prefetch" href="/my-blogs/assets/js/13.e92fd2bc.js"><link rel="prefetch" href="/my-blogs/assets/js/14.08992114.js"><link rel="prefetch" href="/my-blogs/assets/js/15.8ae74a51.js"><link rel="prefetch" href="/my-blogs/assets/js/16.ea5aa394.js"><link rel="prefetch" href="/my-blogs/assets/js/17.e8b466a6.js"><link rel="prefetch" href="/my-blogs/assets/js/18.9007c2f7.js"><link rel="prefetch" href="/my-blogs/assets/js/19.5daaf806.js"><link rel="prefetch" href="/my-blogs/assets/js/20.10073ff0.js"><link rel="prefetch" href="/my-blogs/assets/js/21.c7333030.js"><link rel="prefetch" href="/my-blogs/assets/js/22.8d766e82.js"><link rel="prefetch" href="/my-blogs/assets/js/23.356c4177.js"><link rel="prefetch" href="/my-blogs/assets/js/24.13aee336.js"><link rel="prefetch" href="/my-blogs/assets/js/25.34baa65c.js"><link rel="prefetch" href="/my-blogs/assets/js/26.614930aa.js"><link rel="prefetch" href="/my-blogs/assets/js/27.88db19df.js"><link rel="prefetch" href="/my-blogs/assets/js/28.08c77d4c.js"><link rel="prefetch" href="/my-blogs/assets/js/29.a34e388b.js"><link rel="prefetch" href="/my-blogs/assets/js/30.c70fccea.js"><link rel="prefetch" href="/my-blogs/assets/js/31.9f0e6354.js"><link rel="prefetch" href="/my-blogs/assets/js/32.f33271b2.js"><link rel="prefetch" href="/my-blogs/assets/js/33.da9a1ab6.js"><link rel="prefetch" href="/my-blogs/assets/js/34.aa9ffe15.js"><link rel="prefetch" href="/my-blogs/assets/js/35.db76de84.js"><link rel="prefetch" href="/my-blogs/assets/js/36.8ab5ce6c.js"><link rel="prefetch" href="/my-blogs/assets/js/37.5d5bb845.js"><link rel="prefetch" href="/my-blogs/assets/js/38.eface3e2.js"><link rel="prefetch" href="/my-blogs/assets/js/39.d79cd83f.js"><link rel="prefetch" href="/my-blogs/assets/js/4.27c3f176.js"><link rel="prefetch" href="/my-blogs/assets/js/40.d2d5aed7.js"><link rel="prefetch" href="/my-blogs/assets/js/41.9540c75f.js"><link rel="prefetch" href="/my-blogs/assets/js/42.e3b7a68d.js"><link rel="prefetch" href="/my-blogs/assets/js/43.b1ea5e13.js"><link rel="prefetch" href="/my-blogs/assets/js/44.9a82c08f.js"><link rel="prefetch" href="/my-blogs/assets/js/45.6410e881.js"><link rel="prefetch" href="/my-blogs/assets/js/46.324bd236.js"><link rel="prefetch" href="/my-blogs/assets/js/47.1c76bfac.js"><link rel="prefetch" href="/my-blogs/assets/js/48.b16ef96a.js"><link rel="prefetch" href="/my-blogs/assets/js/49.01df3c8b.js"><link rel="prefetch" href="/my-blogs/assets/js/5.12ce3803.js"><link rel="prefetch" href="/my-blogs/assets/js/50.6c8a72de.js"><link rel="prefetch" href="/my-blogs/assets/js/51.9885eb33.js"><link rel="prefetch" href="/my-blogs/assets/js/52.d145eb65.js"><link rel="prefetch" href="/my-blogs/assets/js/53.6ee4ff32.js"><link rel="prefetch" href="/my-blogs/assets/js/54.7c92b453.js"><link rel="prefetch" href="/my-blogs/assets/js/55.39841c3e.js"><link rel="prefetch" href="/my-blogs/assets/js/57.72fa8e8d.js"><link rel="prefetch" href="/my-blogs/assets/js/58.192a45ab.js"><link rel="prefetch" href="/my-blogs/assets/js/59.22f345e3.js"><link rel="prefetch" href="/my-blogs/assets/js/6.cba633e4.js"><link rel="prefetch" href="/my-blogs/assets/js/60.e76c371d.js"><link rel="prefetch" href="/my-blogs/assets/js/61.7fb6b0ab.js"><link rel="prefetch" href="/my-blogs/assets/js/62.b8547edd.js"><link rel="prefetch" href="/my-blogs/assets/js/63.a9ffdecf.js"><link rel="prefetch" href="/my-blogs/assets/js/64.4148d022.js"><link rel="prefetch" href="/my-blogs/assets/js/65.37d5a7f8.js"><link rel="prefetch" href="/my-blogs/assets/js/66.6a7d6a7f.js"><link rel="prefetch" href="/my-blogs/assets/js/67.ac14097a.js"><link rel="prefetch" href="/my-blogs/assets/js/68.d85c7d2a.js"><link rel="prefetch" href="/my-blogs/assets/js/69.2e68203d.js"><link rel="prefetch" href="/my-blogs/assets/js/7.276768cf.js"><link rel="prefetch" href="/my-blogs/assets/js/70.c49c9f77.js"><link rel="prefetch" href="/my-blogs/assets/js/71.3bdc54b7.js"><link rel="prefetch" href="/my-blogs/assets/js/72.dfa4d9ca.js"><link rel="prefetch" href="/my-blogs/assets/js/73.0bbcf0f2.js"><link rel="prefetch" href="/my-blogs/assets/js/74.c586a4e4.js"><link rel="prefetch" href="/my-blogs/assets/js/75.fd23cf0e.js"><link rel="prefetch" href="/my-blogs/assets/js/76.cb2411ca.js"><link rel="prefetch" href="/my-blogs/assets/js/77.a8e0056e.js"><link rel="prefetch" href="/my-blogs/assets/js/78.fb4f3666.js"><link rel="prefetch" href="/my-blogs/assets/js/79.0b72ddae.js"><link rel="prefetch" href="/my-blogs/assets/js/8.4b975a3c.js"><link rel="prefetch" href="/my-blogs/assets/js/80.69df1e95.js"><link rel="prefetch" href="/my-blogs/assets/js/81.0bfd677d.js"><link rel="prefetch" href="/my-blogs/assets/js/82.1269f8c7.js"><link rel="prefetch" href="/my-blogs/assets/js/83.06efe075.js"><link rel="prefetch" href="/my-blogs/assets/js/84.32e37c99.js"><link rel="prefetch" href="/my-blogs/assets/js/85.655ba1e4.js"><link rel="prefetch" href="/my-blogs/assets/js/86.222d2f68.js"><link rel="prefetch" href="/my-blogs/assets/js/87.dff34348.js"><link rel="prefetch" href="/my-blogs/assets/js/88.06a13cfe.js"><link rel="prefetch" href="/my-blogs/assets/js/89.db8accd3.js"><link rel="prefetch" href="/my-blogs/assets/js/9.5e52629c.js"><link rel="prefetch" href="/my-blogs/assets/js/90.d95c93f2.js"><link rel="prefetch" href="/my-blogs/assets/js/91.de005bdc.js"><link rel="prefetch" href="/my-blogs/assets/js/92.076bc7b6.js"><link rel="prefetch" href="/my-blogs/assets/js/93.5a7c54b1.js"><link rel="prefetch" href="/my-blogs/assets/js/94.ad585b36.js"><link rel="prefetch" href="/my-blogs/assets/js/95.2ef0baec.js"><link rel="prefetch" href="/my-blogs/assets/js/96.fd2d6cdd.js"><link rel="prefetch" href="/my-blogs/assets/js/97.dd865375.js"><link rel="prefetch" href="/my-blogs/assets/js/98.1a3c9f2e.js"><link rel="prefetch" href="/my-blogs/assets/js/99.b6c341ab.js">
+    <link rel="stylesheet" href="/my-blogs/assets/css/0.styles.c6aa4258.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/my-blogs/" class="home-link router-link-active"><img src="/my-blogs/img/logo.png" alt="阿良的个人博客" class="logo"> <span class="site-name can-hide">阿良的个人博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/my-blogs/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语言" class="dropdown-title"><a href="/my-blogs/lang/" class="link-title">语言</a> <span class="title" style="display:none;">语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/my-blogs/pages/a164c7/" class="nav-link">Go</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/eda4d8/" class="nav-link">C++</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/a829c6/" class="nav-link">Python</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/e7ba23/" class="nav-link">Shell</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端技术" class="dropdown-title"><a href="/my-blogs/technology/" class="link-title">后端技术</a> <span class="title" style="display:none;">后端技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/my-blogs/pages/1dfdd1/" class="nav-link">Linux</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/bc1d83/" class="nav-link">MySQL</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/d12aeb/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/559964/" class="nav-link">Docker</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/3b00ea/" class="nav-link">Kafka</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/77ea28/" class="nav-link">Consul</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/8ae3e0/" class="nav-link">Hive</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机基础" class="dropdown-title"><a href="/my-blogs/basics/" class="link-title">计算机基础</a> <span class="title" style="display:none;">计算机基础</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/my-blogs/pages/512063/" class="nav-link">操作系统</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/28f1a1/" class="nav-link">计算机网络</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/29b434/" class="nav-link">数据结构与算法</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><a href="/my-blogs/more/" class="link-title">更多</a> <span class="title" style="display:none;">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/my-blogs/pages/a8e456/" class="nav-link">网站收藏</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/f4f6d6/" class="nav-link">其他文章</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/my-blogs/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/my-blogs/archives/" class="nav-link">归档</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/tags/" class="nav-link">标签</a></li></ul></div></div><div class="nav-item"><a href="/my-blogs/about/" class="nav-link">关于</a></div> <a href="https://github.com/aliang-codes/my-blogs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/my-blogs/img/logo.png"> <div class="blogger-info"><h3>阿良</h3> <span>好记性不如烂笔头</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/my-blogs/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语言" class="dropdown-title"><a href="/my-blogs/lang/" class="link-title">语言</a> <span class="title" style="display:none;">语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/my-blogs/pages/a164c7/" class="nav-link">Go</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/eda4d8/" class="nav-link">C++</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/a829c6/" class="nav-link">Python</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/e7ba23/" class="nav-link">Shell</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端技术" class="dropdown-title"><a href="/my-blogs/technology/" class="link-title">后端技术</a> <span class="title" style="display:none;">后端技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/my-blogs/pages/1dfdd1/" class="nav-link">Linux</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/bc1d83/" class="nav-link">MySQL</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/d12aeb/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/559964/" class="nav-link">Docker</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/3b00ea/" class="nav-link">Kafka</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/77ea28/" class="nav-link">Consul</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/8ae3e0/" class="nav-link">Hive</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机基础" class="dropdown-title"><a href="/my-blogs/basics/" class="link-title">计算机基础</a> <span class="title" style="display:none;">计算机基础</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/my-blogs/pages/512063/" class="nav-link">操作系统</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/28f1a1/" class="nav-link">计算机网络</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/29b434/" class="nav-link">数据结构与算法</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多" class="dropdown-title"><a href="/my-blogs/more/" class="link-title">更多</a> <span class="title" style="display:none;">更多</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/my-blogs/pages/a8e456/" class="nav-link">网站收藏</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/pages/f4f6d6/" class="nav-link">其他文章</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="索引" class="dropdown-title"><a href="/my-blogs/archives/" class="link-title">索引</a> <span class="title" style="display:none;">索引</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/my-blogs/archives/" class="nav-link">归档</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/my-blogs/tags/" class="nav-link">标签</a></li></ul></div></div><div class="nav-item"><a href="/my-blogs/about/" class="nav-link">关于</a></div> <a href="https://github.com/aliang-codes/my-blogs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Linux</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/my-blogs/pages/1dfdd1/" class="sidebar-link">Linux不常用但重要的命令</a></li><li><a href="/my-blogs/pages/154209/" class="sidebar-link">流量复制技术-tcpcopy</a></li><li><a href="/my-blogs/pages/38ba49/" aria-current="page" class="active sidebar-link">流量复制技术-gor</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/my-blogs/pages/38ba49/#一、简单介绍" class="sidebar-link">一、简单介绍</a></li><li class="sidebar-sub-header level2"><a href="/my-blogs/pages/38ba49/#二、基本用法" class="sidebar-link">二、基本用法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/my-blogs/pages/38ba49/#_1-基础选项" class="sidebar-link">1，基础选项</a></li><li class="sidebar-sub-header level3"><a href="/my-blogs/pages/38ba49/#_2-头部选项" class="sidebar-link">2，头部选项</a></li><li class="sidebar-sub-header level4"><a href="/my-blogs/pages/38ba49/#_2-1-正向过滤" class="sidebar-link">2.1 正向过滤</a></li><li class="sidebar-sub-header level4"><a href="/my-blogs/pages/38ba49/#_2-2-反向过滤" class="sidebar-link">2.2 反向过滤</a></li><li class="sidebar-sub-header level4"><a href="/my-blogs/pages/38ba49/#_2-3-修改选项" class="sidebar-link">2.3 修改选项</a></li><li class="sidebar-sub-header level4"><a href="/my-blogs/pages/38ba49/#_2-4-其他" class="sidebar-link">2.4 其他</a></li><li class="sidebar-sub-header level3"><a href="/my-blogs/pages/38ba49/#_3-输入选项" class="sidebar-link">3，输入选项</a></li><li class="sidebar-sub-header level4"><a href="/my-blogs/pages/38ba49/#_3-1-文件输入" class="sidebar-link">3.1 文件输入</a></li><li class="sidebar-sub-header level4"><a href="/my-blogs/pages/38ba49/#_3-2-原始输入" class="sidebar-link">3.2 原始输入</a></li><li class="sidebar-sub-header level4"><a href="/my-blogs/pages/38ba49/#_3-3-kafka-相关" class="sidebar-link">3.3 Kafka 相关</a></li><li class="sidebar-sub-header level4"><a href="/my-blogs/pages/38ba49/#_3-4-其他" class="sidebar-link">3.4 其他</a></li><li class="sidebar-sub-header level3"><a href="/my-blogs/pages/38ba49/#_4-输出选项" class="sidebar-link">4，输出选项</a></li><li class="sidebar-sub-header level4"><a href="/my-blogs/pages/38ba49/#_4-1-输出到其他-http" class="sidebar-link">4.1 输出到其他 http</a></li><li class="sidebar-sub-header level4"><a href="/my-blogs/pages/38ba49/#_4-2-输出到其他-gor-实例" class="sidebar-link">4.2 输出到其他 gor 实例</a></li><li class="sidebar-sub-header level4"><a href="/my-blogs/pages/38ba49/#_4-3-输出到文件" class="sidebar-link">4.3 输出到文件</a></li><li class="sidebar-sub-header level4"><a href="/my-blogs/pages/38ba49/#_4-4-输出到标准输出" class="sidebar-link">4.4 输出到标准输出</a></li><li class="sidebar-sub-header level4"><a href="/my-blogs/pages/38ba49/#_4-5-二进制输出" class="sidebar-link">4.5 二进制输出</a></li><li class="sidebar-sub-header level4"><a href="/my-blogs/pages/38ba49/#_4-6-kafka-相关" class="sidebar-link">4.6 Kafka 相关</a></li><li class="sidebar-sub-header level4"><a href="/my-blogs/pages/38ba49/#_4-7-其他" class="sidebar-link">4.7 其他</a></li></ul></li></ul></li><li><a href="/my-blogs/pages/4a6137/" class="sidebar-link">iNode使用率过高的问题</a></li><li><a href="/my-blogs/pages/5c92fc/" class="sidebar-link">jq命令的基本介绍</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>MySql</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Redis</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Docker</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Kafka</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Consul</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Hive</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-4d71ded6><div class="articleInfo" data-v-4d71ded6><ul class="breadcrumbs" data-v-4d71ded6><li data-v-4d71ded6><a href="/my-blogs/" title="首页" class="iconfont icon-home router-link-active" data-v-4d71ded6></a></li> <li data-v-4d71ded6><a href="/my-blogs/technology/#后端技术" data-v-4d71ded6>后端技术</a></li><li data-v-4d71ded6><a href="/my-blogs/technology/#Linux" data-v-4d71ded6>Linux</a></li></ul> <div class="info" data-v-4d71ded6><div title="作者" class="author iconfont icon-touxiang" data-v-4d71ded6><a href="https://github.com/aliang-codes" target="_blank" title="作者" class="beLink" data-v-4d71ded6>aliang</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-4d71ded6><a href="javascript:;" data-v-4d71ded6>2024-08-18</a></div> <!----> <div class="page-view" style="margin-left:0;" data-v-d8fec2f0 data-v-4d71ded6><div title="文章字数" class="book-words iconfont icon-book" data-v-d8fec2f0><a href="javascript:;" style="margin-left: 3px; color: #888" data-v-d8fec2f0>0</a></div> <!----> <div title="浏览量" class="page-view iconfont icon-view" data-v-d8fec2f0><a href="javascript:;" id="busuanzi_value_page_pv" class="view-data" style="color: #888; margin-left: 3px" data-v-d8fec2f0><i title="正在获取..." class="loading iconfont icon-loading" data-v-d8fec2f0></i></a></div></div></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">流量复制技术-gor<!----></h1> <!----> <div class="theme-vdoing-content content__default"><h2 id="一、简单介绍"><a href="#一、简单介绍" class="header-anchor">#</a> 一、简单介绍</h2> <ul><li>Gor 是一个开源工具，用于捕获实时 <strong>HTTP</strong> 流量并将其回放到测试环境中，以便使用真实数据持续测试系统的可靠性与稳定性，可以提高开发人员对代码部署、配置更改和基础结构更改的信心。</li> <li>Gor 架构试图遵循 UNIX 哲学：一切都由管道组成，各种输入将数据多路复用到输出。</li> <li>用户可以对请求进行速率限制、过滤、重写，甚至可以使用自己的中间件来实现自定义逻辑，还可以以更高的速率重播请求以进行负载测试。</li></ul> <h2 id="二、基本用法"><a href="#二、基本用法" class="header-anchor">#</a> 二、基本用法</h2> <ul><li>用法：gor 输入选项 输出选项</li></ul> <h3 id="_1-基础选项"><a href="#_1-基础选项" class="header-anchor">#</a> 1，基础选项</h3> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 指定单个请求的缓冲区大小，默认 5 MB</span>
+--copy-buffer-size value
+
+<span class="token comment"># 指定 CPU 采样数据的写入文件</span>
+<span class="token parameter variable">--cpuprofile</span> string
+
+<span class="token comment"># 指定多长时间后退出</span>
+--exit-after duration
+
+<span class="token comment"># 设置详细级别，大于 0 时打开 debug 输出模式</span>
+<span class="token parameter variable">-verbose</span> int
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="_2-头部选项"><a href="#_2-头部选项" class="header-anchor">#</a> 2，头部选项</h3> <h4 id="_2-1-正向过滤"><a href="#_2-1-正向过滤" class="header-anchor">#</a> 2.1 正向过滤</h4> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 以正则表达式限定请求体的头部，未匹配上的请求将会被丢弃</span>
+<span class="token comment"># eg：gor --input-raw :8080 --output-http staging.com --http-allow-header api-version:^v1</span>
+--http-allow-header value
+
+<span class="token comment"># 限定允许的请求方法，未匹配上的请求将会被丢弃</span>
+<span class="token comment"># eg：gor --input-raw :8080 --output-http staging.com --http-allow-method GET</span>
+--http-allow-method value
+
+<span class="token comment"># 以正则表达式限定请求的url，未匹配上的请求将会被丢弃</span>
+<span class="token comment"># eg：gor --input-raw :8080 --output-http staging.com --http-allow-url ^www.</span>
+--http-allow-url value
+
+<span class="token comment"># 以正则表达式限定解码之后的基本认证信息，未匹配上的请求将会被丢弃</span>
+<span class="token comment"># gor --input-raw :8080 --output-http staging.com --http-basic-auth-filter &quot;^customer[0-9].*&quot;</span>
+--http-basic-auth-filter value
+
+<span class="token comment"># 接收请求的一小部分，根据特定报头的FNV32-1A哈希一致接受或拒绝请求:</span>
+<span class="token comment"># gor --input-raw :8080 --output-http staging.com --http-header-limiter user-id:25%</span>
+--http-header-limiter value
+
+<span class="token comment"># 通常，gor用 --output-http 提供的主机替换主机http报头，此选项禁用该行为，保留原始主机头。</span>
+--http-original-host
+    	
+<span class="token comment"># 接收一小部分请求，根据特定GET参数的FNV32-1A散列一致地接受或拒绝请求</span>
+<span class="token comment"># eg：gor --input-raw :8080 --output-http staging.com --http-param-limiter user_id:25%</span>
+--http-param-limiter value
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><h4 id="_2-2-反向过滤"><a href="#_2-2-反向过滤" class="header-anchor">#</a> 2.2 反向过滤</h4> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 以正则表达式限定不允许的请求体的头部，匹配上的请求将会被丢弃</span>
+<span class="token comment"># eg：gor --input-raw :8080 --output-http staging.com --http-disallow-header &quot;User-Agent: Replayed by Gor&quot;		 </span>
+--http-disallow-header value
+    	
+<span class="token comment"># 以正则表达式限定不允许的请求的url，匹配上的请求将会被丢弃</span>
+<span class="token comment"># eg：gor --input-raw :8080 --output-http staging.com --http-disallow-url ^www.</span>
+--http-disallow-url value
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h4 id="_2-3-修改选项"><a href="#_2-3-修改选项" class="header-anchor">#</a> 2.3 修改选项</h4> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 基于映射关系重写请求头部，逗号隔开</span>
+<span class="token comment"># eg：gor --input-raw :8080 --output-http staging.com --http-rewrite-header Host: (.*).example.com,$1.beta.example.com</span>
+--http-rewrite-header value
+
+<span class="token comment"># 基于映射关系重写请求URL，分号隔开</span>
+<span class="token comment"># eg：gor --input-raw :8080 --output-http staging.com --http-rewrite-url /v1/user/([^\/]+)/ping:/v2/user/$1/ping</span>
+--http-rewrite-url value
+    		
+<span class="token comment"># 向请求中注入额外的头部字段值</span>
+<span class="token comment"># eg：gor --input-raw :8080 --output-http staging.com --http-set-header 'User-Agent: Gor'</span>
+--http-set-header value
+    		
+<span class="token comment"># 设置请求参数，如果已存在则覆盖</span>
+<span class="token comment"># eg：gor --input-raw :8080 --output-http staging.com --http-set-param api_key=1</span>
+--http-set-param value
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h4 id="_2-4-其他"><a href="#_2-4-其他" class="header-anchor">#</a> 2.4 其他</h4> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 指定端口开启采样，暴露路径 /debug/pprof</span>
+--http-pprof :8181
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="_3-输入选项"><a href="#_3-输入选项" class="header-anchor">#</a> 3，输入选项</h3> <h4 id="_3-1-文件输入"><a href="#_3-1-文件输入" class="header-anchor">#</a> 3.1 文件输入</h4> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 从文件中读取请求，可能是以前录制的文件</span>
+<span class="token comment"># eg：gor --input-file ./requests.gor --output-http staging.com</span>
+--input-file value
+
+<span class="token comment"># 模拟从数据源读取数据，但不重播，将获得有关预期重放时间，发现记录的数量等信息。</span>
+--input-file-dry-run
+
+<span class="token comment"># 循环从文件中读取，用于性能测试</span>
+--input-file-loop
+
+<span class="token comment"># 设置请求之间的最大时间间隔，当请求间隔时间过长，可以跳过该次请求</span>
+--input-file-max-wait duration
+
+<span class="token comment"># 尝试提前读取和缓存多个记录，与此同时，如果它们无序的话它还执行请求排序。由于它需要在内存中保存这个缓冲区，较大的值可能会导致性能变差(默认值为100)。</span>
+--input-file-read-depth int
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h4 id="_3-2-原始输入"><a href="#_3-2-原始输入" class="header-anchor">#</a> 3.2 原始输入</h4> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 从给定的端口捕获流量</span>
+<span class="token comment"># gor --input-raw :8080 --output-http staging.com</span>
+--input-raw value
+
+<span class="token comment"># 如果打开，gor将记录丢失数据包的 HTTP 消息</span>
+--input-raw-allow-incomplete
+
+<span class="token comment"># BPF过滤器编写自定义表达式，可用于非标准网络接口，如隧道或SPAN端口</span>
+<span class="token comment"># eg：--input-raw-bpf-filter 'dst port 80'</span>
+--input-raw-bpf-filter string
+
+<span class="token comment"># 控制操作系统缓冲区的大小，该缓冲区保存数据包直到它们被调度。默认值取决于系统:在Linux中大约为2MB。如果你看到大的包被丢弃，可以增加这个值。</span>
+--input-raw-buffer-size value
+
+<span class="token comment"># 设置pcap超时时间，对于立即模式，不要设置此标志</span>
+--input-raw-buffer-timeout duration
+
+<span class="token comment"># 使用 'libpcap(默认)'、'raw_socket' 或 'pcap_file'拦截流量</span>
+--input-raw-engine libpcap
+
+<span class="token comment"># 等待最后一个TCP数据包的时间，直到认为TCP消息完成(默认2 s)</span>
+--input-raw-expire duration
+
+<span class="token comment"># 指定拦截流量的应用协议，取值范围：http、binary</span>
+--input-raw-protocol value
+
+<span class="token comment"># 如果不为空，则向请求负载注入具有给定名称和真实IP值的 header，通常这个报头应该命名为:X-Real-IP</span>
+--input-raw-realip-header string
+
+<span class="token comment"># 在原始TCP消息上启用统计信息生成器</span>
+--input-raw-stats
+
+<span class="token comment"># 可能的值: PCAP_TSTAMP_HOST, PCAP_TSTAMP_HOST_LOWPREC, PCAP_TSTAMP_HOST_HIPREC, PCAP_TSTAMP_ADAPTER, PCAP_TSTAMP_ADAPTER_UNSYNCED。这个值不是所有系统都支持的，如果你放错了，GoReplay会告诉你可用的值。</span>
+--input-raw-timestamp-type string
+
+<span class="token comment"># 如果打开，gor将跟踪请求之外的响应，并且它们将可用于中间件和文件输出</span>
+--input-raw-track-response
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br></div></div><h4 id="_3-3-kafka-相关"><a href="#_3-3-kafka-相关" class="header-anchor">#</a> 3.3 Kafka 相关</h4> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 从 Kafka 读取请求和返回的统计</span>
+<span class="token comment"># eg：gor --output-stdout --input-kafka-host '192.168.0.1:9092,192.168.0.2:9092'</span>
+--input-kafka-host string
+
+<span class="token comment"># 开启 json 格式，而不是文本格式</span>
+--input-kafka-json-format
+
+<span class="token comment"># 指定要读取状态的 kafka 的 topic </span>
+<span class="token comment"># eg：gor --output-stdout --input-kafka-topic 'kafka-log'</span>
+--input-kafka-topic string
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h4 id="_3-4-其他"><a href="#_3-4-其他" class="header-anchor">#</a> 3.4 其他</h4> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 用于测试输出，每秒发出一次 'Get /' 请求</span>
+--input-dummy value
+
+<span class="token comment"># 用于Gor实例之间的内部通信</span>
+<span class="token comment"># eg：gor --input-tcp :28020 --output-http staging.com</span>
+--input-tcp value
+
+<span class="token comment"># PEM编码的证书文件路径，启用TLS时使用</span>
+--input-tcp-certificate string
+
+<span class="token comment"># PEM编码的证书秘钥文件路径，启用TLS时使用</span>
+--input-tcp-certificate-key string
+
+<span class="token comment"># 开启 TLS 安全校验，别忘了指定证书和秘钥文件的路径</span>
+--input-tcp-secure
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h3 id="_4-输出选项"><a href="#_4-输出选项" class="header-anchor">#</a> 4，输出选项</h3> <h4 id="_4-1-输出到其他-http"><a href="#_4-1-输出到其他-http" class="header-anchor">#</a> 4.1 输出到其他 http</h4> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 转发请求到给定的 http 地址</span>
+<span class="token comment"># eg：gor --input-raw :80 --output-http http://staging.com</span>
+--output-http value
+Forwards incoming requests to given http address.
+
+<span class="token comment"># 发送请求和响应统计到 ElasticSearch</span>
+<span class="token comment"># eg：gor --input-raw :8080 --output-http staging.com --output-http-elasticsearch 'es_host:api_port/index_name'</span>
+--output-http-elasticsearch string
+
+<span class="token comment"># 当所有 worker 繁忙时输出队列的长度，默认 1000</span>
+--output-http-queue-len int
+
+<span class="token comment"># 允许的重定向次数</span>
+--output-http-redirects int
+
+<span class="token comment"># http 响应缓冲区大小，超过此大小的数据将被丢弃</span>
+--output-http-response-buffer value
+
+<span class="token comment"># 在进行 TLS 安全连接时不进行 hostname 校验</span>
+--output-http-skip-verify
+
+<span class="token comment"># 每 N 毫秒报告一次 http 输出队列状态</span>
+--output-http-stats
+
+<span class="token comment"># 报告一次 http 输出队列状态的时间间隔，默认 5000 ms</span>
+--output-http-stats-ms int
+
+<span class="token comment"># 指定 http 请求响应的超时时间，默认 5 s</span>
+--output-http-timeout duration
+
+<span class="token comment"># 如果打开，http 输出响应将设置为所有输出，如stdout, file等。</span>
+--output-http-track-response
+
+<span class="token comment"># 回收空闲 workers 的时间，默认 2 s</span>
+--output-http-worker-timeout duration
+
+<span class="token comment"># 限制最大 worker 数量，使用动态 worker 数量，默认 0 无限制，</span>
+--output-http-workers int
+Gor uses dynamic worker scaling. Enter a number to <span class="token builtin class-name">set</span> a maximum number of workers. default <span class="token operator">=</span> <span class="token number">0</span> <span class="token operator">=</span> unlimited.
+
+<span class="token comment"># 限制最小 worker 数量，默认 1</span>
+--output-http-workers-min int
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br></div></div><h4 id="_4-2-输出到其他-gor-实例"><a href="#_4-2-输出到其他-gor-实例" class="header-anchor">#</a> 4.2 输出到其他 gor 实例</h4> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code>
+<span class="token comment"># 采用内部通讯输出到其他 gor 实例</span>
+<span class="token comment"># eg：gor --input-raw :80 --output-tcp replay.local:28020</span>
+--output-tcp value
+
+<span class="token comment"># TCP 响应缓冲区大小，超过该大小的数据将被丢弃</span>
+--output-tcp-response-buffer value
+
+<span class="token comment"># 使用 TLS 安全连接，另一方的输入应该也要开启 TLS</span>
+--output-tcp-secure
+
+<span class="token comment"># 在进行 TLS 安全连接时不进行 hostname 校验</span>
+--output-tcp-skip-verify
+
+<span class="token comment"># 每 5 s 报告一次 TCP 输出队列状态</span>
+--output-tcp-stats
+
+<span class="token comment"># 使用粘性连接，请求与返回使用相同id时，将被发送到同一个连接</span>
+--output-tcp-sticky
+
+<span class="token comment"># 并行的 tcp 连接数量，默认 10</span>
+--output-tcp-workers int
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h4 id="_4-3-输出到文件"><a href="#_4-3-输出到文件" class="header-anchor">#</a> 4.3 输出到文件</h4> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 将输入的请求写入文件</span>
+<span class="token comment"># eg：gor --input-raw :80 --output-file ./requests.gor</span>
+--output-file value
+
+<span class="token comment"># 以追加的方式写入文件</span>
+--output-file-append
+
+<span class="token comment"># 临时存储的缓冲区路径</span>
+<span class="token comment"># eg：gor --input-raw :80 --output-file s3://mybucket/logs/%Y-%m-%d.gz --output-file-buffer /mnt/logs (default &quot;/tmp&quot;)</span>
+--output-file-buffer string
+
+<span class="token comment"># 强制缓冲区刷入到文件的时间间隔，默认 1 s</span>
+--output-file-flush-interval duration
+
+<span class="token comment"># 输出文件的最大大小，默认 1TB</span>
+--output-file-max-size-limit value
+
+<span class="token comment"># 块队列的大小，默认 256</span>
+--output-file-queue-limit int
+
+<span class="token comment"># 每个块的大小，默认 32mb</span>
+--output-file-size-limit value
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h4 id="_4-4-输出到标准输出"><a href="#_4-4-输出到标准输出" class="header-anchor">#</a> 4.4 输出到标准输出</h4> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 直接丢弃所有请求</span>
+--output-null
+
+<span class="token comment"># 输出到屏幕</span>
+--output-stdout
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h4 id="_4-5-二进制输出"><a href="#_4-5-二进制输出" class="header-anchor">#</a> 4.5 二进制输出</h4> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 将传入的二进制有效负载转发到给定地址</span>
+<span class="token comment"># eg：gor --input-raw :80 --input-raw-protocol binary --output-binary staging.com:80</span>
+--output-binary value
+
+<span class="token comment"># 开启二进制的 debug 输出</span>
+--output-binary-debug
+
+<span class="token comment"># 指定HTTP请求/响应超时，默认值为 5s</span>
+--output-binary-timeout duration
+
+<span class="token comment"># 如果打开，二进制输出响应将设置为所有输出，如stdout, file等。</span>
+--output-binary-track-response
+
+<span class="token comment"># 默认情况下，Gor 动态缩放 worker 数量，也可以直接指定</span>
+--output-binary-workers int
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h4 id="_4-6-kafka-相关"><a href="#_4-6-kafka-相关" class="header-anchor">#</a> 4.6 Kafka 相关</h4> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># Kafka TLS 配置的 CA 证书</span>
+<span class="token comment"># eg：gor  --input-raw :3000 --output-kafka-host '192.168.0.1:9092' --output-kafka-topic 'topic' --kafka-tls-ca-cert cacert.cer.pem --kafka-tls-client-cert client.cer.pem --kafka-tls-client-key client.key.pem</span>
+--kafka-tls-ca-cert string
+
+<span class="token comment"># Kafka TLS 配置的客户端证书</span>
+--kafka-tls-client-cert string
+
+<span class="token comment"># Kafka TLS 配置的客户端秘钥</span>
+--kafka-tls-client-key string
+
+<span class="token comment"># 将请求和返回的统计发送到 Kafka </span>
+<span class="token comment"># eg：gor --input-raw :8080 --output-kafka-host '192.168.0.1:9092,192.168.0.2:9092'</span>
+--output-kafka-host string
+
+<span class="token comment"># 以 json 的格式而非文本</span>
+--output-kafka-json-format
+
+<span class="token comment"># 指定 topic</span>
+<span class="token comment"># eg：gor --input-raw :8080 --output-kafka-topic 'kafka-log'</span>
+--output-kafka-topic string
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h4 id="_4-7-其他"><a href="#_4-7-其他" class="header-anchor">#</a> 4.7 其他</h4> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 输出内存采样数据到指定文件</span>
+<span class="token parameter variable">--memprofile</span> string
+
+<span class="token comment"># 用于通过外部命令修改流量</span>
+<span class="token parameter variable">--middleware</span> string
+
+<span class="token comment"># 如果启用，将自动解码请求和响应：Content-Encoding: gzip 和 Transfer-Encoding: chunked，可以与 --output-stdout一起使用</span>
+--prettify-http
+
+<span class="token comment"># 如果打开，http输出将为每个 TCP 会话创建单独的 worker，分割输出也是基于会话的</span>
+--recognize-tcp-sessions
+
+<span class="token comment"># 默认情况下，每个输出获得相同的流量。如果设置为true，则在所有输出中平均分配流量。</span>
+--split-output <span class="token boolean">true</span>
+
+<span class="token comment"># 开启队列状态输出</span>
+<span class="token parameter variable">--stats</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div></div></div> <!----> <div class="page-edit"><div class="edit-link"><a href="https://github.com/aliang-codes/my-blogs/edit/master/docs/02.后端技术/00.Linux/02.流量复制技术-gor.md" target="_blank" rel="noopener noreferrer">编辑</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="tags"><a href="/my-blogs/tags/?tag=%E6%B5%81%E9%87%8F%E5%A4%8D%E5%88%B6" title="标签">#流量复制</a></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2026/06/25, 11:07:26</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/my-blogs/pages/154209/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">流量复制技术-tcpcopy</div></a> <a href="/my-blogs/pages/4a6137/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">iNode使用率过高的问题</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/my-blogs/pages/154209/" class="prev">流量复制技术-tcpcopy</a></span> <span class="next"><a href="/my-blogs/pages/4a6137/">iNode使用率过高的问题</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/my-blogs/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/my-blogs/pages/248ab6/"><div>
+            GMP 中 G 阻塞了会发生什么
+            <!----></div></a> <span class="date">04-15</span></dt></dl><dl><dd>02</dd> <dt><a href="/my-blogs/pages/be41c6/"><div>
+            go 语言的继承与多态
+            <!----></div></a> <span class="date">11-25</span></dt></dl><dl><dd>03</dd> <dt><a href="/my-blogs/pages/5c92fc/"><div>
+            jq命令的基本介绍
+            <!----></div></a> <span class="date">10-22</span></dt></dl> <dl><dd></dd> <dt><a href="/my-blogs/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:1364255742@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/aliang-codes" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1364255742&amp;site=qq&amp;menu=yes" title="QQ" target="_blank" class="iconfont icon-QQ"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2023-2026
+    <span>| 版权归 aliang 所有 | <a href="https://beian.miit.gov.cn" target="_blank">京ICP备2023035240</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"><div></div></div></div>
+    <script src="/my-blogs/assets/js/app.897002ef.js" defer></script><script src="/my-blogs/assets/js/2.ab75070d.js" defer></script><script src="/my-blogs/assets/js/3.3358a5a5.js" defer></script><script src="/my-blogs/assets/js/56.dc5b5e5d.js" defer></script>
+  </body>
+</html>
