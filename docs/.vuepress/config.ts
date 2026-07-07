@@ -9,9 +9,7 @@ import baiduCode from './config/baiduCode' // 百度统计hm码
 import htmlModules from './config/htmlModules' // 自定义插入的html块
 import { readFileList, readTotalFileWords, readEachFileWords } from './webSiteInfo/readFile';
 
-
-const DOMAIN_NAME = 'erlangtui.top' // 域名 (不带https)
-const WEB_SITE = `https://${DOMAIN_NAME}` // 网址
+const WEB_SITE = `https://aliang-codes.github.io/my-blogs/` // 网址
 
 export default defineConfig4CustomTheme<VdoingThemeConfig>({
   // theme: 'vdoing', // 使用npm主题包
@@ -199,7 +197,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     footer: {
       createYear: 2023, // 博客创建年份
       copyrightInfo:
-        '| 版权归 aliang 所有 | <a href="https://beian.miit.gov.cn" target="_blank">京ICP备2023035240</a>', // 博客版权信息、备案信息等，支持a标签或换行标签</br>
+        '| 版权归 aliang 所有 </a>', // 博客版权信息、备案信息等，支持a标签或换行标签</br>
     },
 
     // 扩展自动生成frontmatter。（当md文件的frontmatter不存在相应的字段时将自动添加。不会覆盖已有的数据。）

@@ -19,8 +19,6 @@ if [ "$DEPLOY_TARGET" = "server" ]; then
   # 进入生成的文件夹
   cd $dist_path
 
-  echo 'erlangtui.top' > CNAME
-
   git init
   git add -A
   git commit -m "deploy to server, $commit_info"
