@@ -57,14 +57,14 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
           { text: 'Hive', link: '/pages/8ae3e0/' },
         ],
       },
-      // {
-      //   text: '计算广告',
-      //   link: '/ad/',
-      //   items: [
-      //     { text: '投放策略', link: '/pages/5cde28/' },
-      //     { text: '召回技术', link: '/pages/662467/' },
-      //   ],
-      // },
+      {
+        text: '计算广告',
+        link: '/ad/',
+        items: [
+          { text: '投放策略', link: '/pages/5cde28/' },
+          { text: '召回技术', link: '/pages/662467/' },
+        ],
+      },
       {
         text: '计算机基础',
         link: '/basics/',
@@ -75,11 +75,16 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         ],
       },
       {
+        text: '其他文章',
+        link: '/other/',
+        items: [
+        ],
+      },
+      {
         text: '更多',
         link: '/more/',
         items: [
           { text: '网站收藏', link: '/pages/a8e456/' },
-          { text: '其他文章', link: '/pages/f4f6d6/' },
         ],
       },
       {
@@ -241,6 +246,8 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         hostname: WEB_SITE,
       },
     ],
+
+    [resolve(__dirname, './plugins/vdoing-mermaid')], // Mermaid 流程图支持（本地插件）
 
     'vuepress-plugin-baidu-autopush', // 百度自动推送
 

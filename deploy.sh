@@ -40,7 +40,6 @@ elif [ "$DEPLOY_TARGET" = "github" ]; then
   # 进入生成的文件夹
   cd $dist_path
 
-  # 不需要 CNAME，因为使用 erlangtui.github.io/aliang 路径
   # 如果使用的是自定义域名，则取消注释下一行
   # echo 'your-domain.com' > CNAME
 
