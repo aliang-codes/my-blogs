@@ -247,7 +247,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
       },
     ],
 
-    [resolve(__dirname, './plugins/vdoing-mermaid')], // Mermaid 流程图支持（本地插件）
+    ['vuepress-plugin-mermaidjs'], // Mermaid 流程图支持
 
     'vuepress-plugin-baidu-autopush', // 百度自动推送
 
